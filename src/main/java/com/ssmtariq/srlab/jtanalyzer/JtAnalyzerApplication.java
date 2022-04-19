@@ -8,9 +8,8 @@ public class JtAnalyzerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JtAnalyzerApplication.class, args);
-		EsJavaClientTest esJavaClientTest = new EsJavaClientTest();
 		try {
-			esJavaClientTest.testCreateClient();
+			App.client();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
