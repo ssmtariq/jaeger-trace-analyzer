@@ -9,7 +9,7 @@ public class JtAnalyzerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JtAnalyzerApplication.class, args);
 		try {
-			App.client();
+			ElasticSearchJClient.client();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
