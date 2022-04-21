@@ -20,17 +20,17 @@ public class ElasticSearchJClient {
 	private static final String ES_HOST = "192.168.5.248";
 	private static final Integer ES_PORT = 9200;
 
-	private static final String[] FETCH_FIELDS = { "startTimeMillis", "spanID", "references", "traceID" };
+	private static final String[] FETCH_FIELDS = { "startTimeMillis", "spanID", "references", "traceID", "process.serviceName" };
 
-	private static final String MATCH_FIELD = "spanID";
-	private static final String[] MUST_MATCH = { "1b9f189c328ddbb1" };
+	private static final String MATCH_FIELD = "flags";
+	private static final String[] MUST_MATCH = { "1" };
 	private static final String[] MUST_NOT_MATCH = { "21.211.33.63" };
 
 	private static final String TIME_FIELD = "startTimeMillis";
 	private static final String START_TIME = dateToMilliseconds("2022/04/18 16:00:00"); //"1650312000000";
 	private static final String END_TIME = dateToMilliseconds("2025/05/06 00:00:00");// "1746561600000";//"2025-05-06T00:00:00";
 
-	private static final String INDEX = "jaeger-span-2022-04-18"; // accepts * as wildcard, .e.g log*
+	private static final String INDEX = "jaeger-span-2022-04-21"; // accepts * as wildcard, .e.g log*
 
 	/**
 	 * Elasticsearch rest client to query from es
@@ -51,7 +51,7 @@ public class ElasticSearchJClient {
 		SearchResponse searchResponse = esClient.search(searchRequest);
 
 		if (searchResponse.getHits().getTotalHits() > 0) {
-			System.out.println(searchResponse.getHits().getTotalHits());
+			System.out.println("Total number of records found: "+searchResponse.getHits().getTotalHits());
 
 			for (SearchHit hit : searchResponse.getHits()) {
 				System.out.println("Match: ");
