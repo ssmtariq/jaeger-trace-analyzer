@@ -17,20 +17,20 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 public class ElasticSearchJClient {
 	private static final String ES_SCHEMA = "http";
-	private static final String ES_HOST = "192.168.5.248";
+	private static final String ES_HOST = "192.168.242.184";
 	private static final Integer ES_PORT = 9200;
 
 	private static final String[] FETCH_FIELDS = { "startTimeMillis", "spanID", "references", "traceID", "process.serviceName" };
 
-	private static final String MATCH_FIELD = "flags";
-	private static final String[] MUST_MATCH = { "1" };
+	private static final String MATCH_FIELD = "spanID";
+	private static final String[] MUST_MATCH = { "2a6ff9e9e58fa03d" };
 	private static final String[] MUST_NOT_MATCH = { "21.211.33.63" };
 
 	private static final String TIME_FIELD = "startTimeMillis";
 	private static final String START_TIME = dateToMilliseconds("2022/04/18 16:00:00"); //"1650312000000";
 	private static final String END_TIME = dateToMilliseconds("2025/05/06 00:00:00");// "1746561600000";//"2025-05-06T00:00:00";
 
-	private static final String INDEX = "jaeger-span-2022-04-21"; // accepts * as wildcard, .e.g log*
+	private static final String INDEX = "jaeger-span-*"; // accepts * as wildcard, .e.g log*
 
 	/**
 	 * Elasticsearch rest client to query from es
@@ -90,17 +90,18 @@ public class ElasticSearchJClient {
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
 
-		if (MUST_MATCH.length > 0) {
-			for (String mustMatchVal : MUST_MATCH) {
-				queryBuilder.must(QueryBuilders.matchQuery(MATCH_FIELD, mustMatchVal));
-			}
-		}
+		// if (MUST_MATCH.length > 0) {
+		// 	for (String mustMatchVal : MUST_MATCH) {
+		// 		queryBuilder.must(QueryBuilders.matchQuery(MATCH_FIELD, mustMatchVal));
+		// 	}
+		// }
+		queryBuilder.must(QueryBuilders.existsQuery("flags"));
 
-		if (MUST_NOT_MATCH.length > 0) {
-			for (String notMatchVal : MUST_NOT_MATCH) {
-				queryBuilder.mustNot(QueryBuilders.matchQuery(MATCH_FIELD, notMatchVal));
-			}
-		}
+		// if (MUST_NOT_MATCH.length > 0) {
+		// 	for (String notMatchVal : MUST_NOT_MATCH) {
+		// 		queryBuilder.mustNot(QueryBuilders.matchQuery(MATCH_FIELD, notMatchVal));
+		// 	}
+		// }
 
 		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).gte(START_TIME));
 		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).lte(END_TIME));
