@@ -1,10 +1,6 @@
 package com.ssmtariq.srlab.jtanalyzer;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import com.ssmtariq.srlab.jtanalyzer.model.TreeNode;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -15,28 +11,22 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import static com.ssmtariq.srlab.jtanalyzer.Constants.*;
+
 public class ElasticSearchJClient {
-	private static final String ES_SCHEMA = "http";
-	private static final String ES_HOST = "192.168.242.184";
-	private static final Integer ES_PORT = 9200;
-
-	private static final String[] FETCH_FIELDS = { "startTimeMillis", "spanID", "references", "traceID", "process.serviceName" };
-
-	private static final String MATCH_FIELD = "spanID";
-	private static final String[] MUST_MATCH = { "2a6ff9e9e58fa03d" };
-	private static final String[] MUST_NOT_MATCH = { "21.211.33.63" };
-
-	private static final String TIME_FIELD = "startTimeMillis";
-	private static final String START_TIME = dateToMilliseconds("2022/04/18 16:00:00"); //"1650312000000";
-	private static final String END_TIME = dateToMilliseconds("2025/05/06 00:00:00");// "1746561600000";//"2025-05-06T00:00:00";
-
-	private static final String INDEX = "jaeger-span-*"; // accepts * as wildcard, .e.g log*
+	private static Map<String, TreeNode> nodeMap = new HashMap<>();
 
 	/**
 	 * Elasticsearch rest client to query from es
 	 * @throws IOException
 	 */
-	public static void client() throws IOException {
+	public void client() throws IOException {
 		// Configure elastic search client
 		RestHighLevelClient esClient = new RestHighLevelClient(
 				RestClient.builder(new HttpHost(ES_HOST, ES_PORT, ES_SCHEMA)));
@@ -44,42 +34,55 @@ public class ElasticSearchJClient {
 		//Prepare ES Query
 		SearchRequest searchRequest = new SearchRequest();
 
-		searchRequest.indices(INDEX);
-		searchRequest.source(buildQuery());
+		searchRequest.indices(ES_INDEX);
+		searchRequest.source(buildQuery().size(10000));
 
 		// Query elastic search
 		SearchResponse searchResponse = esClient.search(searchRequest);
 
 		if (searchResponse.getHits().getTotalHits() > 0) {
 			System.out.println("Total number of records found: "+searchResponse.getHits().getTotalHits());
-
 			for (SearchHit hit : searchResponse.getHits()) {
-				System.out.println("Match: ");
+//				System.out.println("Match: ");
+				TreeNode treeNode = new TreeNode(String.valueOf(hit.getSourceAsMap().get(KEY_SPAN_ID)), (Integer) hit.getSourceAsMap().get(KEY_DURATION));
 				for (String fetchField : FETCH_FIELDS) {
-					System.out.println(" - " + fetchField + " " + hit.getSourceAsMap().get(fetchField));
+//					System.out.println(" - " + fetchField + " " + hit.getSourceAsMap().get(fetchField));
+
+					//Retrieve parent spanId from references
+					if(fetchField.equals(KEY_REFERENCES) && Objects.nonNull(hit.getSourceAsMap().get(fetchField))){
+						ArrayList<Map<String, Object>> references = (ArrayList<Map<String, Object>>) hit.getSourceAsMap().get(fetchField);
+						if (references.size()>0){
+							treeNode.setParentId((String) references.get(0).get(KEY_SPAN_ID));
+						}
+					}
+
+					//Retrieve parent spanId from references
+					if(fetchField.equals(KEY_PROCESS) && Objects.nonNull(hit.getSourceAsMap().get(fetchField))){
+						Map<String, Object> process = (Map<String, Object>) hit.getSourceAsMap().get(fetchField);
+						treeNode.setServiceName((String) process.get(KEY_SERVICE_NAME));
+					}
+				}
+				nodeMap.put(treeNode.getSpanId(), treeNode);
+				if(!treeNode.isRoot() && nodeMap.containsKey(treeNode.getParentId())){
+					nodeMap.get(treeNode.getParentId()).addChildren(treeNode);
 				}
 			}
 		} else {
 			System.out.println("No results matching the criteria.");
 		}
-
 		esClient.close();
-	}
 
-	/**
-	 * Convert custom date to milliseconds
-	 * @param iDate
-	 * @return
-	 */
-	private static String dateToMilliseconds(String iDate){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = null;
-		try {
-			date = dateFormat.parse(iDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return String.valueOf(date.getTime());
+		final int[] counter = {1};
+		nodeMap.forEach((k,v)->{
+			if(v.getChildren().size()>1){
+				System.out.println("Node Data - "+ counter[0]);
+				System.out.println("\t SpanId: "+v.getSpanId() +";"+" ServiceName: "+v.getServiceName()+";"+" ParentId: "+v.getParentId()+";"+" Duration: "+v.getDuration()+";"+" Is Root: "+v.isRoot());
+				System.out.println("\t Childrens: "+v.getChildren());
+			}
+			counter[0]++;
+		});
+
+		System.exit(0);
 	}
 
 	/**
