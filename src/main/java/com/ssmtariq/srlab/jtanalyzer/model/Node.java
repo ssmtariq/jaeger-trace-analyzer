@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class TreeNode {
+public class Node {
     private String spanId;
     private String serviceName;
     private String parentId;
+    private String operationName;
     private long duration;
-    private List<TreeNode> children = new ArrayList<>();
+    private List<Node> children = new ArrayList<>();
 
-    public TreeNode(String spanId, long duration){
+    public Node(String spanId, long duration){
         this.spanId = spanId;
         this.duration = duration;
     }
@@ -40,6 +41,14 @@ public class TreeNode {
         this.serviceName = serviceName;
     }
 
+    public String getOperationName() {
+        return operationName;
+    }
+
+    public void setOperationName(String operationName) {
+        this.operationName = operationName;
+    }
+
     public long getDuration() {
         return duration;
     }
@@ -48,11 +57,11 @@ public class TreeNode {
         this.duration = duration;
     }
 
-    public List<TreeNode> getChildren() {
+    public List<Node> getChildren() {
         return children;
     }
 
-    public void addChildren(TreeNode childNode) {
+    public void addChildren(Node childNode) {
         this.children.add(childNode);
     }
 
