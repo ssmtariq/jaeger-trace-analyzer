@@ -132,7 +132,7 @@ public class GenericTree {
     public static void aggregateResult(Map<String, Double> serviceDuration) {
         serviceDuration.forEach((k,v)->{
             if (aggregatorMap.containsKey(k)) {
-                aggregatorMap.put(k, (long) (v+aggregatorMap.get(k)));
+                aggregatorMap.put(k, (v.longValue()+aggregatorMap.get(k)));
             } else {
                 aggregatorMap.put(k, v.longValue());
             }
