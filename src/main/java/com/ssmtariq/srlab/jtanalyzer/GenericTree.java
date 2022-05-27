@@ -113,10 +113,10 @@ public class GenericTree {
     public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Double> serviceDuration) {
         System.out.printf("%-26s %-6s %-15s \n", "SERVICE", "SPAN", "DURATION(seconds)");
         System.out.println("---------------------------------------------------");
-        final int[] counter = {0};
+//        final int[] counter = {0};
         spanCounter.forEach((k, v) -> {
             if (v > 0) {
-                counter[0]++;
+//                counter[0]++;
                 System.out.printf("|%-25s |%-5s |%-15s| \n", k, v, (serviceDuration.get(k) / 1000000));
             }
         });
@@ -131,7 +131,10 @@ public class GenericTree {
 
     public static void aggregateResult(Map<String, Double> serviceDuration) {
         serviceDuration.forEach((k,v)->{
+            System.out.println(v);
             System.out.println(Math.round(v));
+            System.out.println(v.longValue());
+            System.out.println(v.intValue());
             if (aggregatorMap.containsKey(k)) {
                 aggregatorMap.put(k, (Math.round(v)+aggregatorMap.get(k)));
             } else {
@@ -145,10 +148,10 @@ public class GenericTree {
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
         System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
         System.out.println("---------------------------------------------------");
-        final int[] counter = {0};
+//        final int[] counter = {0};
         aggregatorMap.forEach((k, v) -> {
             if (v > 0) {
-                counter[0]++;
+//                counter[0]++;
                 System.out.printf("|%-25s |%-15s| \n", k, v, (aggregatorMap.get(k) / requestCounter[0]));
             }
         });
