@@ -49,7 +49,7 @@ public class GenericTree {
     public static void displaySpanSummary(Node node){
         final int[] counter = {0};
         Map<String, Integer> spanCounter = new HashMap<>();
-        Map<String, Long> serviceDuration = new HashMap<>();
+        Map<String, Double> serviceDuration = new HashMap<>();
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
         while (queue.size()>0){
@@ -78,7 +78,7 @@ public class GenericTree {
         }
     }
 
-    public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Long> serviceDuration){
+    public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Double> serviceDuration){
         System.out.println("## Displaying service wise span counts ##");
         final int[] counter = {0};
         spanCounter.forEach((k,v)->{
@@ -91,14 +91,9 @@ public class GenericTree {
         System.out.println();
     }
 
-    public static void calculateServiceDuration(Map<String, Long> serviceDuration, Node node){
+    public static void calculateServiceDuration(Map<String, Double> serviceDuration, Node node){
         if(!serviceDuration.containsKey(node.getServiceName())){
-            serviceDuration.put(node.getServiceName(), node.getDuration());
+            serviceDuration.put(node.getServiceName(), (double) node.getDuration());
         }
-        //        if(serviceDuration.containsKey(node.getServiceName())){
-//            serviceDuration.put(node.getServiceName(), (serviceDuration.get(node.getServiceName())+node.getDuration()));
-//        }else {
-//            serviceDuration.put(node.getServiceName(), node.getDuration());
-//        }
     }
 }
