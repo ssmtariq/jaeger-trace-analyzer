@@ -106,6 +106,8 @@ public class ElasticSearchJClient {
 			GenericTree.displaySpanSummary(nodeMap.get(s));
 		});
 
+		GenericTree.displayAggregatedResult();
+
 		System.exit(0);
 	}
 

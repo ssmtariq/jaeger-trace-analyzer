@@ -8,6 +8,8 @@ import static com.ssmtariq.srlab.jtanalyzer.Constants.*;
 
 public class GenericTree {
     private static Integer NUMBER_OF_SERVICE_INVOLVED = 0;
+    private static final int[] requestCounter = {0};
+    private static Map<String, Double> aggregatorMap = new HashMap<>();
 
     /**
      * Euler traversal
@@ -71,26 +73,28 @@ public class GenericTree {
 
     public static void displaySpanSummary(Node node) {
         Node root = node;
-        final int[] counter = {0};
-        Map<String, Integer> spanCounter = new HashMap<>();
+        final int[] spanCounter = {0};
+        Map<String, Integer> spanCollector = new HashMap<>();
         Map<String, Double> serviceDuration = new HashMap<>();
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
         while (queue.size() > 0) {
             node = queue.remove();
-            calculateServiceSpanCount(spanCounter, node);
+            calculateServiceSpanCount(spanCollector, node);
             calculateServiceDuration(serviceDuration, node);
+            aggregateResult(serviceDuration);
             for (Node child : node.getChildren()) {
                 queue.add(child);
             }
-            counter[0]++;
+            spanCounter[0]++;
         }
-        NUMBER_OF_SERVICE_INVOLVED = spanCounter.entrySet().size();
+        NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
         if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
+            requestCounter[0]++;
             System.out.println("####################");
-            System.out.println("#Total Spans - " + counter[0] + "#");
+            System.out.println("#Total Spans - " + spanCounter[0] + "#");
             System.out.println("####################");
-            displayServiceAggregatedInfo(spanCounter, serviceDuration);
+            displayServiceAggregatedInfo(spanCollector, serviceDuration);
             LevelOrderTraversal(root);
             System.out.println("\n");
         }
@@ -123,5 +127,29 @@ public class GenericTree {
         if (!serviceDuration.containsKey(node.getServiceName())) {
             serviceDuration.put(node.getServiceName(), (double) node.getDuration());
         }
+    }
+
+    public static void aggregateResult(Map<String, Double> serviceDuration) {
+        serviceDuration.forEach((k,v)->{
+            if (aggregatorMap.containsKey(k)) {
+                aggregatorMap.put(k,v+aggregatorMap.get(k));
+            } else {
+                aggregatorMap.put(k, v);
+            }
+        });
+    }
+
+    public static void displayAggregatedResult() {
+        System.out.println("***********Latency Calculation Results*************");
+        System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
+        System.out.println("---------------------------------------------------");
+        final int[] counter = {0};
+        aggregatorMap.forEach((k, v) -> {
+            if (v > 0) {
+                counter[0]++;
+                System.out.printf("|%-25s |%-15s| \n", k, v, (aggregatorMap.get(k) / requestCounter[0]));
+            }
+        });
+        System.out.println();
     }
 }
