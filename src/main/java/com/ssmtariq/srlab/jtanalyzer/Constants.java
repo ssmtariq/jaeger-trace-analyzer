@@ -2,7 +2,7 @@ package com.ssmtariq.srlab.jtanalyzer;
 
 public final class Constants {
     public static final String ES_SCHEMA = "http";
-    public static final String ES_HOST = "192.168.45.3";
+    public static final String ES_HOST = "192.168.45.2";
     public static final Integer ES_PORT = 9200;
     public static final String ES_INDEX = "jaeger-span-*";
 
@@ -20,10 +20,40 @@ public final class Constants {
 
     public static final String TIME_FIELD = "startTimeMillis";
 //    @Value("${es.start-time}")
-    public static final String START_TIME = Utility.dateToMilliseconds("2022/05/12 19:00:46"); //"1650312000000";
+    public static final String START_TIME = Utility.dateToMilliseconds("2022/05/24 16:08:46"); //"1650312000000";
 //    @Value("${es.end-time}")
-    public static final String END_TIME = Utility.dateToMilliseconds("2025/05/13 10:18:56");// "1746561600000";//"2025-05-06T00:00:00";
+    public static final String END_TIME = Utility.dateToMilliseconds("2025/05/26 10:18:56");// "1746561600000";//"2025-05-06T00:00:00";
 
+    public static final String SERVICE_TRAVEL2 = "ts-travel2-service";
+    public static final Integer INDEX_TRAVEL2 = 1;
+    public static final String SERVICE_TICKET_INFO = "ts-ticketinfo-service";
+    public static final Integer INDEX_TICKET_INFO = 2;
+    public static final String SERVICE_BASIC = "ts-basic-service";
+    public static final Integer INDEX_BASIC = 3;
+    public static final String SERVICE_PRICE = "ts-price-service";
+    public static final Integer INDEX_PRICE = 4;
+    public static final String SERVICE_SEAT = "ts-seat-service";
+    public static final Integer INDEX_SEAT = 5;
+    public static final String SERVICE_CONFIG = "ts-config-service";
+    public static final Integer INDEX_CONFIG = 6;
+    public static final String SERVICE_ROUTE = "ts-route-service";
+    public static final Integer INDEX_ROUTE = 7;
+    public static final String SERVICE_ORDER_OTHER = "ts-order-other-service";
+    public static final Integer INDEX_ORDER_OTHER = 8;
+    public static final String SERVICE_STATION = "ts-station-service";
+    public static final Integer INDEX_STATION = 9;
+    public static final String SERVICE_TRAIN = "ts-train-service";
+    public static final Integer INDEX_TRAIN = 10;
     public static final String SERVICE_PRESERVE_OTHER = "ts-preserve-other-service";
+    public static final Integer INDEX_PRESERVE_OTHER = 11;
+    public static final String SERVICE_CONTACTS = "ts-contacts-service";
+    public static final Integer INDEX_CONTACTS = 12;
+    public static final String SERVICE_ORDER = "ts-order-service";
+    public static final Integer INDEX_ORDER = 13;
+    public static final String SERVICE_SECURITY = "ts-security-service";
+    public static final String SERVICE_USER = "ts-user-service";
+    public static final String SERVICE_NOTIFICATION = "ts-notification-service";
+    public static final String SERVICE_FOOD = "ts-food-service";
 
+    public static final Integer NUMBER_OF_SERVICE_COUNT = 14;
 }
