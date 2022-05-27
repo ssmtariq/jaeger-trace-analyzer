@@ -150,7 +150,7 @@ public class GenericTree {
         System.out.println("---------------------------------------------------");
         aggregatorMap.forEach((k, v) -> {
             if (v > 0) {
-                System.out.printf("|%-25s |%-15s| \n", k, (v / requestCounter[0]));
+                System.out.printf("|%-25s |%-15s| \n", k, ((v/1000000) / requestCounter[0]));
             }
         });
         System.out.println();
