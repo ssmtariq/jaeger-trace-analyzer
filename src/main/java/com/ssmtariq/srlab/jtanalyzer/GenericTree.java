@@ -80,14 +80,15 @@ public class GenericTree {
 
     public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Double> serviceDuration){
 //        System.out.println("## Displaying service wise span counts ##");
-        System.out.printf("%-25s : %-5s : %-15s \n", "SERVICE", "SPAN", "DURATION(seconds)");
+        System.out.printf("|%-25s| |%-5s| |%-15s| \n", "SERVICE", "SPAN", "DURATION(seconds)");
+        System.out.println("-------------------------------------------------");
         final int[] counter = {0};
         spanCounter.forEach((k,v)->{
             if(v>0){
                 counter[0]++;
 //                System.out.printf(k + " (" + v +")" + "[" + (serviceDuration.get(k)/1000000) + "s]" + "\t");
-                System.out.printf("%-25s : %-5s : %-15s \n", k, v, (serviceDuration.get(k)/1000000));
-                if(counter[0]%5==0) System.out.println();
+                System.out.printf("|%-25s| |%-5s| |%-15s| \n", k, v, (serviceDuration.get(k)/1000000));
+//                if(counter[0]%5==0) System.out.println();
             }
         });
         System.out.println();
