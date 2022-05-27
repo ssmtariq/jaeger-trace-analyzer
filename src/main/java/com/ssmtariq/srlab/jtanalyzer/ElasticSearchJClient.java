@@ -104,7 +104,7 @@ public class ElasticSearchJClient {
 		roots.forEach(s->{
 			System.out.println("**************** Displaying the Tree ******************");
 //			GenericTree.display(nodeMap.get(s));
-			GenericTree.levelOrder(nodeMap.get(s));
+			GenericTree.displaySpanSummary(nodeMap.get(s));
 		});
 
 		System.exit(0);
@@ -122,9 +122,6 @@ public class ElasticSearchJClient {
 
 		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).gte(START_TIME));
 		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).lte(END_TIME));
-
-//		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).gte(START_TIME));
-//		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).lte(END_TIME));
 
 		searchSourceBuilder.query(queryBuilder).fetchSource(FETCH_FIELDS, null);
 		searchSourceBuilder.sort(FieldSortBuilder.DOC_FIELD_NAME, SortOrder.ASC);
