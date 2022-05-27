@@ -45,9 +45,6 @@ public class GenericTree {
                 System.out.print(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
                 // Enqueue all children of
                 // the dequeued item
-//                for (Node child : node.getChildren()) {
-//                    queue.add(child);
-//                }
                 if(node.getChildren().size()>0) queue.addAll(node.getChildren());
                 size--;
             }
@@ -64,9 +61,6 @@ public class GenericTree {
             node = queue.remove();
             System.out.println(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
 
-//            for (Node child : node.getChildren()) {
-//                queue.add(child);
-//            }
             if(node.getChildren().size()>0) queue.addAll(node.getChildren());
             counter[0]++;
         }
@@ -84,9 +78,6 @@ public class GenericTree {
             node = queue.remove();
             calculateServiceSpanCount(spanCollector, node);
             calculateServiceDuration(serviceDuration, node);
-//            for (Node child : node.getChildren()) {
-//                queue.add(child);
-//            }
             if(node.getChildren().size()>0) queue.addAll(node.getChildren());
             spanCounter[0]++;
         }
@@ -132,10 +123,6 @@ public class GenericTree {
 
     public static void aggregateResult(Map<String, Double> serviceDuration) {
         serviceDuration.forEach((k,v)->{
-            System.out.println(v);
-            System.out.println(Math.round(v));
-            System.out.println(v.longValue());
-            System.out.println(v.intValue());
             if (aggregatorMap.containsKey(k)) {
                 aggregatorMap.put(k, v+aggregatorMap.get(k));
             } else {
