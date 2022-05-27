@@ -9,7 +9,7 @@ import static com.ssmtariq.srlab.jtanalyzer.Constants.*;
 public class GenericTree {
     private static Integer NUMBER_OF_SERVICE_INVOLVED = 0;
     private static final int[] requestCounter = {0};
-    private static Map<String, Double> aggregatorMap = new HashMap<>();
+    private static Map<String, Long> aggregatorMap = new HashMap<>();
 
     /**
      * Euler traversal
@@ -132,15 +132,16 @@ public class GenericTree {
     public static void aggregateResult(Map<String, Double> serviceDuration) {
         serviceDuration.forEach((k,v)->{
             if (aggregatorMap.containsKey(k)) {
-                aggregatorMap.put(k,v+aggregatorMap.get(k));
+                aggregatorMap.put(k, (long) (v+aggregatorMap.get(k)));
             } else {
-                aggregatorMap.put(k, v);
+                aggregatorMap.put(k, v.longValue());
             }
         });
     }
 
     public static void displayAggregatedResult() {
         System.out.println("***********Latency Calculation Results*************");
+        System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
         System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
         System.out.println("---------------------------------------------------");
         final int[] counter = {0};
