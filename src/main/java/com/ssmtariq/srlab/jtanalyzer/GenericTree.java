@@ -63,7 +63,9 @@ public class GenericTree {
         }
         NUMBER_OF_SERVICE_INVOLVED = spanCounter.entrySet().size();
         if(NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)){
-            System.out.println("Total Spans - "+ counter[0]);
+            System.out.println("####################");
+            System.out.println("#Total Spans - "+ counter[0]+"#");
+            System.out.println("####################");
             displayServiceAggregatedInfo(spanCounter, serviceDuration);
         }
     }
