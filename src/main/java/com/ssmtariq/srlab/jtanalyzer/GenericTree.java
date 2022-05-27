@@ -95,7 +95,7 @@ public class GenericTree {
             System.out.println("#Total Spans - " + spanCounter[0] + "#");
             System.out.println("####################");
             displayServiceAggregatedInfo(spanCollector, serviceDuration);
-            LevelOrderTraversal(root);
+//            LevelOrderTraversal(root);
             System.out.println("\n");
         }
     }
@@ -131,6 +131,7 @@ public class GenericTree {
 
     public static void aggregateResult(Map<String, Double> serviceDuration) {
         serviceDuration.forEach((k,v)->{
+            System.out.println(Math.round(v));
             if (aggregatorMap.containsKey(k)) {
                 aggregatorMap.put(k, (Math.round(v)+aggregatorMap.get(k)));
             } else {
