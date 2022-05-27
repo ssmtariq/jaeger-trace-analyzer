@@ -92,10 +92,13 @@ public class GenericTree {
     }
 
     public static void calculateServiceDuration(Map<String, Long> serviceDuration, Node node){
-        if(serviceDuration.containsKey(node.getServiceName())){
-            serviceDuration.put(node.getServiceName(), (serviceDuration.get(node.getServiceName())+node.getDuration()));
-        }else {
+        if(!serviceDuration.containsKey(node.getServiceName())){
             serviceDuration.put(node.getServiceName(), node.getDuration());
         }
+        //        if(serviceDuration.containsKey(node.getServiceName())){
+//            serviceDuration.put(node.getServiceName(), (serviceDuration.get(node.getServiceName())+node.getDuration()));
+//        }else {
+//            serviceDuration.put(node.getServiceName(), node.getDuration());
+//        }
     }
 }
