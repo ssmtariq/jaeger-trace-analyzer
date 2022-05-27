@@ -82,12 +82,12 @@ public class GenericTree {
 
     public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Double> serviceDuration){
         System.out.printf("%-26s %-6s %-15s \n", "SERVICE", "SPAN", "DURATION(seconds)");
-        System.out.println("-------------------------------------------------");
+        System.out.println("---------------------------------------------------");
         final int[] counter = {0};
         spanCounter.forEach((k,v)->{
             if(v>0){
                 counter[0]++;
-                System.out.printf("|%-25s |%-5s |%-15s \n", k, v, (serviceDuration.get(k)/1000000));
+                System.out.printf("|%-25s |%-5s |%-15s| \n", k, v, (serviceDuration.get(k)/1000000));
             }
         });
         System.out.println();
