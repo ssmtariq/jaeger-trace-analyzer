@@ -84,8 +84,8 @@ public class GenericTree {
         spanCounter.forEach((k,v)->{
             if(v>0){
                 counter[0]++;
-                System.out.printf(k + " (" + v +")" + "[" + serviceDuration.get(k) + " ms]" + "\t");
-                if(counter[0]%5==0) System.out.println();
+                System.out.println(k + " (" + v +")" + "[" + serviceDuration.get(k) + "ms]");
+//                if(counter[0]%5==0) System.out.println();
             }
         });
         System.out.println();
