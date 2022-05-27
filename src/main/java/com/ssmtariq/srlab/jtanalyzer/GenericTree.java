@@ -45,9 +45,10 @@ public class GenericTree {
                 System.out.print(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
                 // Enqueue all children of
                 // the dequeued item
-                for (Node child : node.getChildren()) {
-                    queue.add(child);
-                }
+//                for (Node child : node.getChildren()) {
+//                    queue.add(child);
+//                }
+                if(node.getChildren().size()>0) queue.addAll(node.getChildren());
                 size--;
             }
             // Print new line between two levels
@@ -63,9 +64,10 @@ public class GenericTree {
             node = queue.remove();
             System.out.println(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
 
-            for (Node child : node.getChildren()) {
-                queue.add(child);
-            }
+//            for (Node child : node.getChildren()) {
+//                queue.add(child);
+//            }
+            if(node.getChildren().size()>0) queue.addAll(node.getChildren());
             counter[0]++;
         }
         System.out.println(".");
@@ -82,9 +84,10 @@ public class GenericTree {
             node = queue.remove();
             calculateServiceSpanCount(spanCollector, node);
             calculateServiceDuration(serviceDuration, node);
-            for (Node child : node.getChildren()) {
-                queue.add(child);
-            }
+//            for (Node child : node.getChildren()) {
+//                queue.add(child);
+//            }
+            if(node.getChildren().size()>0) queue.addAll(node.getChildren());
             spanCounter[0]++;
         }
         NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
@@ -113,10 +116,8 @@ public class GenericTree {
     public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Double> serviceDuration) {
         System.out.printf("%-26s %-6s %-15s \n", "SERVICE", "SPAN", "DURATION(seconds)");
         System.out.println("---------------------------------------------------");
-//        final int[] counter = {0};
         spanCounter.forEach((k, v) -> {
             if (v > 0) {
-//                counter[0]++;
                 System.out.printf("|%-25s |%-5s |%-15s| \n", k, v, (serviceDuration.get(k) / 1000000));
             }
         });
@@ -146,6 +147,7 @@ public class GenericTree {
     public static void displayAggregatedResult() {
         System.out.println("***********Latency Calculation Results*************");
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
+        System.out.println("---------------------------------------------------");
         System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
         System.out.println("---------------------------------------------------");
         aggregatorMap.forEach((k, v) -> {
