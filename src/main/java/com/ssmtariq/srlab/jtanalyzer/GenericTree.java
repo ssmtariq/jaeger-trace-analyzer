@@ -49,12 +49,13 @@ public class GenericTree {
     public static void displaySpanSummary(Node node){
         final int[] counter = {0};
         Map<String, Integer> spanCounter = new HashMap<>();
+        Map<String, Long> serviceDuration = new HashMap<>();
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
         while (queue.size()>0){
             node = queue.remove();
             calculateServiceSpanCount(spanCounter, node);
-
+            calculateServiceDuration(serviceDuration, node);
             for (Node child: node.getChildren()){
                 queue.add(child);
             }
@@ -63,7 +64,7 @@ public class GenericTree {
         NUMBER_OF_SERVICE_INVOLVED = spanCounter.entrySet().size();
         if(NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)){
             System.out.println("Total Spans - "+ counter[0]);
-            displayServiceSpanCount(spanCounter);
+            displayServiceAggregatedInfo(spanCounter, serviceDuration);
         }
     }
 
@@ -77,16 +78,24 @@ public class GenericTree {
         }
     }
 
-    public static void displayServiceSpanCount(Map<String, Integer> spanCounter){
+    public static void displayServiceAggregatedInfo(Map<String, Integer> spanCounter, Map<String, Long> serviceDuration){
         System.out.println("## Displaying service wise span counts ##");
         final int[] counter = {0};
         spanCounter.forEach((k,v)->{
             if(v>0){
                 counter[0]++;
-                System.out.printf(k + " (" + v +")\t");
+                System.out.printf(k + " (" + v +")" + "[" + serviceDuration.get(k) + " ms]" + "\t");
                 if(counter[0]%5==0) System.out.println();
             }
         });
         System.out.println();
+    }
+
+    public static void calculateServiceDuration(Map<String, Long> serviceDuration, Node node){
+        if(serviceDuration.containsKey(node.getServiceName())){
+            serviceDuration.put(node.getServiceName(), (serviceDuration.get(node.getServiceName())+node.getDuration()));
+        }else {
+            serviceDuration.put(node.getServiceName(), node.getDuration());
+        }
     }
 }
