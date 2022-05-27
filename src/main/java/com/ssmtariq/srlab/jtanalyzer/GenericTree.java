@@ -31,27 +31,21 @@ public class GenericTree {
 
     static void LevelOrderTraversal(Node root) {
         if (root == null) return;
-        // Standard level order traversal code
-        // using queue
         Queue<Node> queue = new LinkedList<>(); // Create a queue
         queue.add(root); // Enqueue root
         while (!queue.isEmpty()) {
             int size = queue.size();
             // If this node has children
             while (size > 0) {
-                // Dequeue an item from queue
-                // and print it
-                Node parent = queue.peek();
+                Node node = queue.peek();
                 queue.remove();
-                System.out.print(parent.getServiceName() + " ");
-
+//                System.out.print(parent.getServiceName() + " ");
+                System.out.println(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
                 // Enqueue all children of
                 // the dequeued item
-                for (Node child : parent.getChildren()) {
+                for (Node child : node.getChildren()) {
                     queue.add(child);
                 }
-//                for (int i = 0; i < parent.getChildren().size(); i++)
-//                    queue.add(parent.getChildren().get(i));
                 size--;
             }
             // Print new line between two levels
