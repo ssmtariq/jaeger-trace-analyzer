@@ -85,7 +85,7 @@ public class GenericTree {
             if(v>0){
                 counter[0]++;
 //                System.out.printf(k + " (" + v +")" + "[" + (serviceDuration.get(k)/1000000) + "s]" + "\t");
-                System.out.printf("Service: %s%n Span : %s%n Duration : %s%n s", k, v, (serviceDuration.get(k)/1000000));
+                System.out.printf("Service: %-25s Span : %-10s Duration : %-15s s\n", k, v, (serviceDuration.get(k)/1000000));
                 if(counter[0]%5==0) System.out.println();
             }
         });
