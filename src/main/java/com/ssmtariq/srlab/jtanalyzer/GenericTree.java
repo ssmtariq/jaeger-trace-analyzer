@@ -49,7 +49,7 @@ public class GenericTree {
                 size--;
             }
             // Print new line between two levels
-            System.out.println();
+            System.out.println("\n");
         }
     }
 
@@ -92,6 +92,7 @@ public class GenericTree {
             System.out.println("####################");
             displayServiceAggregatedInfo(spanCounter, serviceDuration);
             LevelOrderTraversal(root);
+            System.out.println("\n");
         }
     }
 
