@@ -40,7 +40,7 @@ public class GenericTree {
                 Node node = queue.peek();
                 queue.remove();
 //                System.out.print(parent.getServiceName() + " ");
-                System.out.println(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
+                System.out.print(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
                 // Enqueue all children of
                 // the dequeued item
                 for (Node child : node.getChildren()) {
