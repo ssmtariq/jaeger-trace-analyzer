@@ -36,7 +36,7 @@ public class GenericTree {
         queue.add(node);
         while (queue.size()>0){
             node = queue.remove();
-            System.out.println(Utility.getServiceNameShort(node.getServiceName()) + " ");
+            System.out.println(Utility.getServiceNameShort(node.getServiceName()) +"(" +node.getOperationName() +")" + " ");
 
             for (Node child: node.getChildren()){
                 queue.add(child);
@@ -47,6 +47,7 @@ public class GenericTree {
     }
 
     public static void displaySpanSummary(Node node){
+        Node root = node;
         final int[] counter = {0};
         Map<String, Integer> spanCounter = new HashMap<>();
         Map<String, Double> serviceDuration = new HashMap<>();
@@ -67,6 +68,7 @@ public class GenericTree {
             System.out.println("#Total Spans - "+ counter[0]+"#");
             System.out.println("####################");
             displayServiceAggregatedInfo(spanCounter, serviceDuration);
+            levelOrder(root);
         }
     }
 
