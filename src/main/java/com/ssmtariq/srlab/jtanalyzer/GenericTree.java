@@ -82,7 +82,6 @@ public class GenericTree {
             node = queue.remove();
             calculateServiceSpanCount(spanCollector, node);
             calculateServiceDuration(serviceDuration, node);
-            aggregateResult(serviceDuration);
             for (Node child : node.getChildren()) {
                 queue.add(child);
             }
@@ -91,6 +90,7 @@ public class GenericTree {
         NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
         if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
             requestCounter[0]++;
+            aggregateResult(serviceDuration);
             System.out.println("####################");
             System.out.println("#Total Spans - " + spanCounter[0] + "#");
             System.out.println("####################");
