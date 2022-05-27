@@ -23,24 +23,7 @@ public final class Constants {
     public static final String START_TIME = Utility.dateToMilliseconds("2022/05/24 16:08:46"); //"1650312000000";
 //    @Value("${es.end-time}")
     public static final String END_TIME = Utility.dateToMilliseconds("2025/05/26 10:18:56");// "1746561600000";//"2025-05-06T00:00:00";
-
-    public static final String SERVICE_TRAVEL2 = "ts-travel2-service";
-    public static final String SERVICE_TICKET_INFO = "ts-ticketinfo-service";
-    public static final String SERVICE_BASIC = "ts-basic-service";
-    public static final String SERVICE_PRICE = "ts-price-service";
-    public static final String SERVICE_SEAT = "ts-seat-service";
-    public static final String SERVICE_CONFIG = "ts-config-service";
-    public static final String SERVICE_ROUTE = "ts-route-service";
-    public static final String SERVICE_ORDER_OTHER = "ts-order-other-service";
-    public static final String SERVICE_STATION = "ts-station-service";
-    public static final String SERVICE_TRAIN = "ts-train-service";
     public static final String SERVICE_PRESERVE_OTHER = "ts-preserve-other-service";
-    public static final String SERVICE_CONTACTS = "ts-contacts-service";
-    public static final String SERVICE_ORDER = "ts-order-service";
-    public static final String SERVICE_SECURITY = "ts-security-service";
-    public static final String SERVICE_USER = "ts-user-service";
-    public static final String SERVICE_NOTIFICATION = "ts-notification-service";
-    public static final String SERVICE_FOOD = "ts-food-service";
 
-    public static final Integer NUMBER_OF_SERVICE_COUNT = 14;
+    public static final Integer NUMBER_OF_SERVICE_COUNT = 17;
 }
