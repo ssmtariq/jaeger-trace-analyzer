@@ -10,6 +10,7 @@ import java.util.Queue;
 import static com.ssmtariq.srlab.jtanalyzer.Constants.*;
 
 public class GenericTree {
+    private static Integer NUMBER_OF_SERVICE_INVOLVED = 0;
     /**
      * Euler traversal
      * @param node
@@ -59,8 +60,11 @@ public class GenericTree {
             }
             counter[0]++;
         }
-        System.out.println("Total Spans - "+ counter[0]);
-        displayServiceSpanCount(spanCounter);
+        NUMBER_OF_SERVICE_INVOLVED = spanCounter.entrySet().size();
+        if(NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)){
+            System.out.println("Total Spans - "+ counter[0]);
+            displayServiceSpanCount(spanCounter);
+        }
     }
 
     public static void calculateServiceSpanCount(Map<String, Integer> spanCounter, Node node){
@@ -71,78 +75,6 @@ public class GenericTree {
         }else {
             spanCounter.put(node.getServiceName(), 1);
         }
-//        switch(node.getServiceName()) {
-//            case SERVICE_PRESERVE_OTHER:
-//                i = spanCounter.get(SERVICE_PRESERVE_OTHER);
-//                spanCounter.put(SERVICE_PRESERVE_OTHER, i==null?1:++i);
-//                break;
-//            case SERVICE_TRAVEL2:
-//                i = spanCounter.get(SERVICE_TRAVEL2);
-//                spanCounter.put(SERVICE_TRAVEL2, i==null?1:++i);
-//                break;
-//            case SERVICE_TICKET_INFO:
-//                i = spanCounter.get(SERVICE_TICKET_INFO);
-//                spanCounter.put(SERVICE_TICKET_INFO, i==null?1:++i);
-//                break;
-//            case SERVICE_BASIC:
-//                i = spanCounter.get(SERVICE_BASIC);
-//                spanCounter.put(SERVICE_BASIC, i==null?1:++i);
-//                break;
-//            case SERVICE_PRICE:
-//                i = spanCounter.get(SERVICE_PRICE);
-//                spanCounter.put(SERVICE_PRICE, i==null?1:++i);
-//                break;
-//            case SERVICE_SEAT:
-//                i = spanCounter.get(SERVICE_SEAT);
-//                spanCounter.put(SERVICE_SEAT, i==null?1:++i);
-//                break;
-//            case SERVICE_CONFIG:
-//                i = spanCounter.get(SERVICE_CONFIG);
-//                spanCounter.put(SERVICE_CONFIG, i==null?1:++i);
-//                break;
-//            case SERVICE_ORDER_OTHER:
-//                i = spanCounter.get(SERVICE_ORDER_OTHER);
-//                spanCounter.put(SERVICE_ORDER_OTHER, i==null?1:++i);
-//                break;
-//            case SERVICE_STATION:
-//                i = spanCounter.get(SERVICE_STATION);
-//                spanCounter.put(SERVICE_STATION, i==null?1:++i);
-//                break;
-//            case SERVICE_TRAIN:
-//                i = spanCounter.get(SERVICE_TRAIN);
-//                spanCounter.put(SERVICE_TRAIN, i==null?1:++i);
-//                break;
-//            case SERVICE_ROUTE:
-//                i = spanCounter.get(SERVICE_ROUTE);
-//                spanCounter.put(SERVICE_ROUTE, i==null?1:++i);
-//                break;
-//            case SERVICE_CONTACTS:
-//                i = spanCounter.get(SERVICE_CONTACTS);
-//                spanCounter.put(SERVICE_CONTACTS, i==null?1:++i);
-//                break;
-//            case SERVICE_ORDER:
-//                i = spanCounter.get(SERVICE_ORDER);
-//                spanCounter.put(SERVICE_ORDER, i==null?1:++i);
-//                break;
-//            case SERVICE_SECURITY:
-//                i = spanCounter.get(SERVICE_SECURITY);
-//                spanCounter.put(SERVICE_SECURITY, i==null?1:++i);
-//                break;
-//            case SERVICE_USER:
-//                i = spanCounter.get(SERVICE_USER);
-//                spanCounter.put(SERVICE_USER, i==null?1:++i);
-//                break;
-//            case SERVICE_NOTIFICATION:
-//                i = spanCounter.get(SERVICE_NOTIFICATION);
-//                spanCounter.put(SERVICE_NOTIFICATION, i==null?1:++i);
-//                break;
-//            case SERVICE_FOOD:
-//                i = spanCounter.get(SERVICE_FOOD);
-//                spanCounter.put(SERVICE_FOOD, i==null?1:++i);
-//                break;
-//            default:
-//                System.out.println(node.getServiceName());
-//        }
     }
 
     public static void displayServiceSpanCount(Map<String, Integer> spanCounter){

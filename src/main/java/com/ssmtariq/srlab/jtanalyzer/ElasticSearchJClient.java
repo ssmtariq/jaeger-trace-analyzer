@@ -101,9 +101,8 @@ public class ElasticSearchJClient {
 			counter[0]++;
 		});
 
+		/* Display the tree info */
 		roots.forEach(s->{
-			System.out.println("**************** Displaying the Tree ******************");
-//			GenericTree.display(nodeMap.get(s));
 			GenericTree.displaySpanSummary(nodeMap.get(s));
 		});
 
