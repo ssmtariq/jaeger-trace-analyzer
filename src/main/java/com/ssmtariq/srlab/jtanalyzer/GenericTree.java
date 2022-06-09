@@ -145,6 +145,7 @@ public class GenericTree {
 
     public static void displayAggregatedResult() {
         aggregatedLatencyMap = Utility.sortByValue(aggregatedLatencyMap);
+        aggregatedSpanCountMap = Utility.sortByValue(aggregatedSpanCountMap);
         System.out.println("***********Latency Calculation Results*************");
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
         if (requestCounter[0]>0 && aggregatedLatencyMap.keySet().size()==aggregatedSpanCountMap.keySet().size()){
