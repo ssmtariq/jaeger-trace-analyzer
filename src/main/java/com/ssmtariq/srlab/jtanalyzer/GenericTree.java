@@ -9,7 +9,8 @@ import static com.ssmtariq.srlab.jtanalyzer.Constants.*;
 public class GenericTree {
     private static Integer NUMBER_OF_SERVICE_INVOLVED = 0;
     private static final int[] requestCounter = {0};
-    private static Map<String, Double> aggregatorMap = new HashMap<>();
+    private static Map<String, Double> aggregatedLatencyMap = new HashMap<>();
+    private static Map<String, Long> aggregatedSpanCountMap = new HashMap<>();
 
     /**
      * Euler traversal
@@ -84,7 +85,8 @@ public class GenericTree {
         NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
         if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
             requestCounter[0]++;
-            aggregateResult(serviceDuration);
+            aggregateLatency(serviceDuration);
+            aggregateSpanCount(spanCollector);
             System.out.println("####################");
             System.out.println("#Total Spans - " + spanCounter[0] + "#");
             System.out.println("####################");
@@ -121,25 +123,35 @@ public class GenericTree {
         }
     }
 
-    public static void aggregateResult(Map<String, Double> serviceDuration) {
-        serviceDuration.forEach((k,v)->{
-            if (aggregatorMap.containsKey(k)) {
-                aggregatorMap.put(k, v+aggregatorMap.get(k));
+    public static void aggregateSpanCount(Map<String, Integer> spanCollector) {
+        spanCollector.forEach((k,v)->{
+            if (aggregatedSpanCountMap.containsKey(k)) {
+                aggregatedSpanCountMap.put(k, v+ aggregatedSpanCountMap.get(k));
             } else {
-                aggregatorMap.put(k, v);
+                aggregatedSpanCountMap.put(k, Long.valueOf(v));
+            }
+        });
+    }
+
+    public static void aggregateLatency(Map<String, Double> serviceDuration) {
+        serviceDuration.forEach((k,v)->{
+            if (aggregatedLatencyMap.containsKey(k)) {
+                aggregatedLatencyMap.put(k, v+ aggregatedLatencyMap.get(k));
+            } else {
+                aggregatedLatencyMap.put(k, v);
             }
         });
     }
 
     public static void displayAggregatedResult() {
-        aggregatorMap = Utility.sortByValue(aggregatorMap);
+        aggregatedLatencyMap = Utility.sortByValue(aggregatedLatencyMap);
         System.out.println("***********Latency Calculation Results*************");
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
-        if (requestCounter[0]>0){
+        if (requestCounter[0]>0 && aggregatedLatencyMap.keySet().size()==aggregatedSpanCountMap.keySet().size()){
             System.out.println("---------------------------------------------------");
-            System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
+            System.out.printf("%-26s %-15s %-10s \n", "SERVICE", "AVERAGE LATENCY(seconds)", "SPAN");
             System.out.println("---------------------------------------------------");
-            aggregatorMap.forEach((k, v) -> {
+            aggregatedLatencyMap.forEach((k, v) -> {
                 if (v > 0) {
                     System.out.printf("|%-25s |%-15s| \n", k, ((v/1000000) / requestCounter[0]));
                 }

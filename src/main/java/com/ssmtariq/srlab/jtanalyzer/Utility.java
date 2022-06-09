@@ -28,7 +28,8 @@ public final class Utility {
 
     public static Map<String, Double> sortByValue(Map<String, Double> map) {
         List<Map.Entry<String, Double>> list = new ArrayList<>(map.entrySet());
-        list.sort(Map.Entry.comparingByValue());
+//        list.sort(Map.Entry.comparingByValue());
+        Collections.reverse(list);
 
         Map<String, Double> result = new LinkedHashMap<>();
         for (Map.Entry<String, Double> entry : list) {
