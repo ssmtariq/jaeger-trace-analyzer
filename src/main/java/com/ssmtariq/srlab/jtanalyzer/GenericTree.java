@@ -135,14 +135,16 @@ public class GenericTree {
         aggregatorMap = Utility.sortByValue(aggregatorMap);
         System.out.println("***********Latency Calculation Results*************");
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
-        System.out.println("---------------------------------------------------");
-        System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
-        System.out.println("---------------------------------------------------");
-        aggregatorMap.forEach((k, v) -> {
-            if (v > 0) {
-                System.out.printf("|%-25s |%-15s| \n", k, ((v/1000000) / requestCounter[0]));
-            }
-        });
-        System.out.println();
+        if (requestCounter[0]>0){
+            System.out.println("---------------------------------------------------");
+            System.out.printf("%-26s %-15s \n", "SERVICE", "AVERAGE LATENCY(seconds)");
+            System.out.println("---------------------------------------------------");
+            aggregatorMap.forEach((k, v) -> {
+                if (v > 0) {
+                    System.out.printf("|%-25s |%-15s| \n", k, ((v/1000000) / requestCounter[0]));
+                }
+            });
+            System.out.println();
+        }
     }
 }
