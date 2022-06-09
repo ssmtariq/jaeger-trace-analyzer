@@ -2,8 +2,7 @@ package com.ssmtariq.srlab.jtanalyzer;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public final class Utility {
     public static final String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
@@ -25,5 +24,17 @@ public final class Utility {
 
     public static String getServiceNameShort(String name){
         return name.substring(3, (name.length()-8)).toUpperCase(Locale.ROOT);
+    }
+
+    public static Map<String, Double> sortByValue(Map<String, Double> map) {
+        List<Map.Entry<String, Double>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+        Map<String, Double> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Double> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }

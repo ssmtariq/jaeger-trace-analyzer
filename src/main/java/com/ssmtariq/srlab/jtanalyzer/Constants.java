@@ -2,7 +2,7 @@ package com.ssmtariq.srlab.jtanalyzer;
 
 public final class Constants {
     public static final String ES_SCHEMA = "http";
-    public static final String ES_HOST = "192.168.45.2";
+    public static final String ES_HOST = "192.168.152.59";
     public static final Integer ES_PORT = 9200;
     public static final String ES_INDEX = "jaeger-span-*";
 

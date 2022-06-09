@@ -132,6 +132,7 @@ public class GenericTree {
     }
 
     public static void displayAggregatedResult() {
+        aggregatorMap = Utility.sortByValue(aggregatorMap);
         System.out.println("***********Latency Calculation Results*************");
         System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
         System.out.println("---------------------------------------------------");

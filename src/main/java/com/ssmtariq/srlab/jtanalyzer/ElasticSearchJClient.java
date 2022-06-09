@@ -90,16 +90,16 @@ public class ElasticSearchJClient {
 			}
 		});
 
-		/*  */
-		nodeMap.forEach((k,v)->{
-			if(v.getChildren().size()>0 && v.getServiceName().equals(SERVICE_PRESERVE_OTHER)){
-				System.out.println("Node Data - "+ counter[0]);
-				System.out.println("\t SpanId: "+v.getSpanId() +";"+" ServiceName: "+Utility.getServiceNameShort(v.getServiceName())+";"+" ParentId: "+v.getParentId()+";"+" Duration: "+v.getDuration()+";"+" Is Root: "+v.isRoot());
-				System.out.println("\t Childrens: "+v.getChildren());
-				roots.add(v.getSpanId());
-			}
-			counter[0]++;
-		});
+		/* Display roots found */
+//		nodeMap.forEach((k,v)->{
+//			if(v.getChildren().size()>0 && v.getServiceName().equals(SERVICE_PRESERVE_OTHER)){
+//				System.out.println("Node Data - "+ counter[0]);
+//				System.out.println("\t SpanId: "+v.getSpanId() +";"+" ServiceName: "+Utility.getServiceNameShort(v.getServiceName())+";"+" ParentId: "+v.getParentId()+";"+" Duration: "+v.getDuration()+";"+" Is Root: "+v.isRoot());
+//				System.out.println("\t Childrens: "+v.getChildren());
+//				roots.add(v.getSpanId());
+//			}
+//			counter[0]++;
+//		});
 
 		/* Display the tree info */
 		roots.forEach(s->{
