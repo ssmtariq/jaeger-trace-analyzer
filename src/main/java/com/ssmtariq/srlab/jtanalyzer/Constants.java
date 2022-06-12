@@ -20,7 +20,7 @@ public final class Constants {
 
     public static final String TIME_FIELD = "startTimeMillis";
 //    @Value("${es.start-time}")
-    public static final String START_TIME = Utility.dateToMilliseconds("2022/05/24 16:08:46"); //"1650312000000";
+    public static final String START_TIME = Utility.dateToMilliseconds("2022/06/12 10:00:46"); //"1650312000000";
 //    @Value("${es.end-time}")
     public static final String END_TIME = Utility.dateToMilliseconds("2025/05/26 10:18:56");// "1746561600000";//"2025-05-06T00:00:00";
     public static final String SERVICE_PRESERVE_OTHER = "ts-preserve-other-service";

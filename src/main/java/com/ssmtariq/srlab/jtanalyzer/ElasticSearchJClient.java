@@ -44,9 +44,10 @@ public class ElasticSearchJClient {
 		SearchResponse searchResponse = esClient.search(searchRequest);
 
 		//Scroll until no hits are returned
+		System.out.println("Total number of spans found: "+searchResponse.getHits().getTotalHits());
+		System.out.println("Calculating the results ./././.");
 		do {
 			if (searchResponse.getHits().getTotalHits() > 0) {
-				System.out.println("Total number of spans found: "+searchResponse.getHits().getTotalHits());
 				for (SearchHit hit : searchResponse.getHits()) {
 
 					/* Create new node for the span */

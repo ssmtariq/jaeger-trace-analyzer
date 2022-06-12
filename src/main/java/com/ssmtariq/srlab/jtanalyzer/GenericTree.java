@@ -87,9 +87,9 @@ public class GenericTree {
             requestCounter[0]++;
             aggregateLatency(serviceDuration);
             aggregateSpanCount(spanCollector);
-            System.out.println("####################");
-            System.out.println("#Total Spans - " + spanCounter[0] + "#");
-            System.out.println("####################");
+            System.out.println("#####################################");
+            System.out.println("#Request No - "+requestCounter[0]+", Total Spans - " + spanCounter[0] + "#");
+            System.out.println("#####################################");
             displayServiceAggregatedInfo(spanCollector, serviceDuration);
 //            LevelOrderTraversal(root);
             System.out.println("\n");
@@ -146,15 +146,15 @@ public class GenericTree {
     public static void displayAggregatedResult() {
         aggregatedLatencyMap = Utility.sortByValue(aggregatedLatencyMap);
         aggregatedSpanCountMap = Utility.sortByValue(aggregatedSpanCountMap);
-        System.out.println("================ Latency Calculation Results ================");
-        System.out.println("TOTAL NUMBER OF REQUESTS: "+requestCounter[0]);
+        System.out.println("================= Latency Calculation Results =================");
+        System.out.println("TOTAL NUMBER OF REQUESTS FOUND: "+requestCounter[0]);
         if (requestCounter[0]>0 && aggregatedLatencyMap.keySet().size()==aggregatedSpanCountMap.keySet().size()){
-            System.out.println("---------------------------------------------------------------");
-            System.out.printf("%-26s %-11s %-18s \n", "SERVICE", "TOTAL SPAN", "AVERAGE LATENCY(seconds)");
-            System.out.println("---------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------");
+            System.out.printf("%-26s %-11s %-20s \n", "SERVICE", "TOTAL SPAN", "AVERAGE LATENCY(seconds)");
+            System.out.println("-----------------------------------------------------------------");
             aggregatedLatencyMap.forEach((k, v) -> {
                 if (v > 0) {
-                    System.out.printf("|%-25s |%-10s |%-20s| \n", k, aggregatedSpanCountMap.get(k), ((v/1000000) / requestCounter[0]));
+                    System.out.printf("|%-25s |%-10s |%-24s| \n", k, aggregatedSpanCountMap.get(k), ((v/1000000) / requestCounter[0]));
                 }
             });
             System.out.println();
