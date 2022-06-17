@@ -103,11 +103,14 @@ public class ElasticSearchJClient {
 		});
 
 		/* Display the tree info */
-		roots.forEach(s->{
-			GenericTree.displaySpanSummary(nodeMap.get(s));
-		});
+		// roots.forEach(s->{
+		// 	GenericTree.displaySpanSummary(nodeMap.get(s));
+		// });
 
-		GenericTree.displayAggregatedResult();
+		MergedTree.generate(nodeMap, roots);
+		MergedTree.displayAggregatedResult();
+
+		// GenericTree.displayAggregatedResult();
 
 		System.exit(0);
 	}

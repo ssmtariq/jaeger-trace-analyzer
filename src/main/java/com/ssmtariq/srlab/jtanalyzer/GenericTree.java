@@ -11,6 +11,7 @@ public class GenericTree {
     private static final int[] requestCounter = {0};
     private static Map<String, Double> aggregatedLatencyMap = new HashMap<>();
     private static Map<String, Long> aggregatedSpanCountMap = new HashMap<>();
+    private static List<String> successRequestRoots = new ArrayList<>();
 
     /**
      * Euler traversal
@@ -66,6 +67,27 @@ public class GenericTree {
             counter[0]++;
         }
         System.out.println(".");
+    }
+
+    public static void collectSuccessRequestRoots(Node root) {
+        Node node = root;
+        String spanId = root.getSpanId();
+        Map<String, Integer> spanCollector = new HashMap<>();
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        while (queue.size() > 0) {
+            node = queue.remove();
+            calculateServiceSpanCount(spanCollector, node);
+            if(node.getChildren().size()>0) queue.addAll(node.getChildren());
+        }
+        NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
+        if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
+            successRequestRoots.add(spanId);
+        }
+    }
+
+    public static List<String> getSuccessRequestRoots() {
+        return successRequestRoots;
     }
 
     public static void displaySpanSummary(Node node) {
