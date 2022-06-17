@@ -26,19 +26,6 @@ public final class Utility {
         return name.substring(3, (name.length()-8)).toUpperCase(Locale.ROOT);
     }
 
-//    public static Map<String, Double> sortByValue(Map<String, Double> map) {
-//        List<Map.Entry<String, Double>> list = new ArrayList<>(map.entrySet());
-//        list.sort(Map.Entry.comparingByValue());
-//        Collections.reverse(list);
-//
-//        Map<String, Double> result = new LinkedHashMap<>();
-//        for (Map.Entry<String, Double> entry : list) {
-//            result.put(entry.getKey(), entry.getValue());
-//        }
-//
-//        return result;
-//    }
-
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
         list.sort(Map.Entry.comparingByValue());

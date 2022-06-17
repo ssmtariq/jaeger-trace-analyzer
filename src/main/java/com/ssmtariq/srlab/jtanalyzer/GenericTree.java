@@ -33,7 +33,7 @@ public class GenericTree {
         }
     }
 
-    static void LevelOrderTraversal(Node root) {
+    static void levelOrderTraversal(Node root) {
         if (root == null) return;
         Queue<Node> queue = new LinkedList<>(); // Create a queue
         queue.add(root); // Enqueue root
@@ -53,20 +53,6 @@ public class GenericTree {
             // Print new line between two levels
             System.out.println("\n");
         }
-    }
-
-    public static void levelOrder(Node node) {
-        final int[] counter = {0};
-        Queue<Node> queue = new ArrayDeque<>();
-        queue.add(node);
-        while (queue.size() > 0) {
-            node = queue.remove();
-            System.out.println(Utility.getServiceNameShort(node.getServiceName()) + "(" + node.getOperationName() + ")" + " ");
-
-            if(node.getChildren().size()>0) queue.addAll(node.getChildren());
-            counter[0]++;
-        }
-        System.out.println(".");
     }
 
     public static void collectSuccessRequestRoots(Node root) {

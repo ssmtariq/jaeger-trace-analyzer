@@ -19,18 +19,9 @@ public class MergedTree {
         completedRequestRoots.forEach(root->{
             constructMergedTree(rawTrees, rawTrees.get(root));
         });
-//        constructMergedTree(rawTrees, rawTrees.get(GenericTree.getSuccessRequestRoots().get(0)));
-        /* Populate child list of each node */
-//        mergedNodeMap.forEach((k,v)->{
-//            if(v.getParentPath()!=null && mergedNodeMap.containsKey(v.getParentPath())){
-//                mergedNodeMap.get(v.getParentPath()).addChildren(v);
-//            }
-//        });
-//        levelOrderTraversal(mergedNodeMap.get(Utility.getServiceNameShort(mergedRoot.getServiceName())+"["+mergedRoot.getOperationName()+"]"));
     }
 
     public static void constructMergedTree(Map<String, Node> rawTrees, Node root) {
-//        requestCounter[0]++;
         if (root == null) return;
         Queue<Node> queue = new LinkedList<>(); // Create a queue
         queue.add(root); // Enqueue root
@@ -53,17 +44,10 @@ public class MergedTree {
                     requestCount += totalRequestToRPCMap.get(path);
                 }
                 totalRequestToRPCMap.put(path, requestCount);
-
-//                System.out.println(path +": "+node.getDuration());
-//                System.out.println();
-
-                // Enqueue all children of
-                // the dequeued item
+                // Enqueue all children of then dequeued item
                 if (node.getChildren().size() > 0) queue.addAll(node.getChildren());
                 size--;
             }
-            // Print new line between two levels
-//            System.out.println("\n");
         }
     }
 
