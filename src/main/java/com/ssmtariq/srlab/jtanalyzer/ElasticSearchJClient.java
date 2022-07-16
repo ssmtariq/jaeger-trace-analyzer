@@ -51,7 +51,7 @@ public class ElasticSearchJClient {
 				for (SearchHit hit : searchResponse.getHits()) {
 
 					/* Create new node for the span */
-					Node node = new Node(String.valueOf(hit.getSourceAsMap().get(KEY_SPAN_ID)), (Integer) hit.getSourceAsMap().get(KEY_DURATION));
+					Node node = new Node(String.valueOf(hit.getSourceAsMap().get(KEY_SPAN_ID)), ((Number) hit.getSourceAsMap().get(KEY_DURATION)).longValue());
 					node.setOperationName(String.valueOf(hit.getSourceAsMap().get(KEY_OPERATION_NAME)));
 					for (String fetchField : FETCH_FIELDS) {
 						//Set parentId of the span from references
