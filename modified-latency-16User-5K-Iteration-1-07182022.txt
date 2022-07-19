@@ -1,0 +1,82 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.6)
+
+2022-07-19 06:15:40.072  INFO 14613 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_312 on node-0.tt-opt-2.cloudprof-pg0.utah.cloudlab.us with PID 14613 (/users/ssmtariq/jaeger-trace-analyzer/target/jaeger-trace-analyzer-0.0.1-SNAPSHOT.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
+2022-07-19 06:15:40.077  INFO 14613 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-07-19 06:15:41.342  INFO 14613 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 1.92 seconds (JVM running for 2.628)
+Total number of spans found: 722362
+Calculating the results ./././.
+Map size: 722362
+================= Latency Calculation Results =================
+TOTAL NUMBER OF REQUESTS FOUND: 2191
+----------------------------------------------------------------------------------------------------------------------------------
+AVERAGE LATENCY(seconds)  TOTAL SPAN  REMOTE PROCEDURE            
+----------------------------------------------------------------------------------------------------------------------------------
+|469.16080739388406       |2191       |PRESERVE-OTHER[preserve]  
+|284.5355174591511        |13146      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST] 
+|183.60114172615243       |10955      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET] 
+|24.05571251255135        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo] 
+|20.794692638521223       |6573       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST] 
+|20.166039644911          |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval] 
+|18.46942084527613        |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST] 
+|16.442636557279783       |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST]->ORDER-OTHER[getTicketListByDateAndTripId] 
+|9.22294909310817         |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create] 
+|8.839627915107256        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->SECURITY[check] 
+|8.535195694659972        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[POST] 
+|8.298351848014606        |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->SECURITY[check]->SECURITY[GET] 
+|7.984261998174349        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->SECURITY[check]->SECURITY[GET]->ORDER-OTHER[securityInfoCheck] 
+|7.100020349612049        |2190       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->ORDER-OTHER[createNewOrder] 
+|6.763250884527612        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[POST]->ORDER-OTHER[getTicketListByDateAndTripId] 
+|4.504935037425833        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->NOTIFICATION[preserve_success] 
+|2.8589943162939297       |24101      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET] 
+|1.2430287106344133       |17528      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId] 
+|1.1480568817891375       |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->ORDER-OTHER[calculateSoldTicket] 
+|1.0187657005933364       |17528      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET] 
+|0.7830390953902328       |17528      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId] 
+|0.609072827932451        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel] 
+|0.6078610816978549       |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel] 
+|0.5812711099954359       |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST] 
+|0.580447331811958        |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST] 
+|0.5373395454130534       |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel] 
+|0.5309742542218165       |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel] 
+|0.4546807462345961       |17528      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET] 
+|0.3577639424920128       |15337      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET] 
+|0.3545712793245094       |15337      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET] 
+|0.3031305426745778       |13146      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET] 
+|0.29625427841168417      |17528      |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET]->STATION[queryForStationId] 
+|0.16058324007302602      |8764       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->STATION[queryForStationId] 
+|0.15338151118210863      |8764       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->STATION[queryForStationId] 
+|0.13755913144682794      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId] 
+|0.13016993701506163      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET] 
+|0.09502330807850297      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET] 
+|0.0835264395253309       |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET]->TRAIN[retrieve] 
+|0.08028803012323141      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->STATION[queryForStationId] 
+|0.07455407850296668      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId] 
+|0.07087574258329529      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId] 
+|0.050325092651757185     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET] 
+|0.04539219260611593      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->FOOD[createFoodOrder] 
+|0.04378215426745778      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->TRAIN[retrieve] 
+|0.04362308032861707      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->SECURITY[check]->SECURITY[GET]->ORDER[securityInfoCheck] 
+|0.04307726563213145      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->TRAIN[retrieve] 
+|0.04267558101323597      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET]->TRAIN[retrieve] 
+|0.042045256503879504     |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET] 
+|0.040497500684618895     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getRouteByTripId] 
+|0.04014853217708809      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->CONFIG[retrieve] 
+|0.03792715015974441      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->USER[getUserByUserId] 
+|0.03671418530351438      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->TRAIN[retrieveAverageSpeed] 
+|0.03557369511638521      |4382       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.033756353263350074     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[GET]->CONTACTS[getContactsByContactsId] 
+|0.02621567549064354      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->PRICE[query] 
+|0.022515723413966224     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET] 
+|0.021826836604290276     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->PRICE[query] 
+|0.021185606115928797     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->ROUTE[queryById] 
+|0.01999535919671383      |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TRAVEL2[getTripAllDetailInfo]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.019321498402555908     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->SEAT[create]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.019080294842537655     |2191       |PRESERVE-OTHER[preserve]->PRESERVE-OTHER[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->ROUTE[queryById] 
+
