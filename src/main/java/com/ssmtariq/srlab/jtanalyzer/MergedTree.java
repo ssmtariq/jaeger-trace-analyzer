@@ -3,6 +3,7 @@ package com.ssmtariq.srlab.jtanalyzer;
 import com.ssmtariq.srlab.jtanalyzer.model.Node;
 
 import java.util.*;
+import static com.ssmtariq.srlab.jtanalyzer.Constants.SUCCESS_REQUESTS_TO_RETRIEVE;
 
 public class MergedTree {
     private static final int[] requestCounter = {0};
@@ -16,9 +17,15 @@ public class MergedTree {
         }
         List<String> completedRequestRoots = GenericTree.getSuccessRequestRoots();
         requestCounter[0] = completedRequestRoots.size();
-        completedRequestRoots.forEach(root->{
+        int reqNum = 0;
+        for(String root: completedRequestRoots){
             constructMergedTree(rawTrees, rawTrees.get(root));
-        });
+            reqNum++;
+            if(SUCCESS_REQUESTS_TO_RETRIEVE>0 && reqNum==SUCCESS_REQUESTS_TO_RETRIEVE){
+                requestCounter[0] = SUCCESS_REQUESTS_TO_RETRIEVE;
+                break;
+            }
+        };
     }
 
     public static void constructMergedTree(Map<String, Node> rawTrees, Node root) {

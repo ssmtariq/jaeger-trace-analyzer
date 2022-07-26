@@ -29,7 +29,7 @@ public class ElasticSearchJClient {
 	 * Elasticsearch rest client to query from es
 	 * @throws IOException
 	 */
-	public void client() throws IOException {
+	public void execute() throws IOException {
 		// Configure elastic search client
 		RestHighLevelClient esClient = new RestHighLevelClient(
 				RestClient.builder(new HttpHost(ES_HOST, ES_PORT, ES_SCHEMA)));
@@ -94,23 +94,13 @@ public class ElasticSearchJClient {
 		/* Display roots found */
 		nodeMap.forEach((k,v)->{
 			if(v.getChildren().size()>0 && v.getServiceName().equals(SERVICE_PRESERVE_OTHER)){
-//				System.out.println("Node Data - "+ counter[0]);
-//				System.out.println("\t SpanId: "+v.getSpanId() +";"+" ServiceName: "+Utility.getServiceNameShort(v.getServiceName())+";"+" ParentId: "+v.getParentId()+";"+" Duration: "+v.getDuration()+";"+" Is Root: "+v.isRoot());
-//				System.out.println("\t Childrens: "+v.getChildren());
 				roots.add(v.getSpanId());
 			}
 			counter[0]++;
 		});
 
-		/* Display the tree info */
-		// roots.forEach(s->{
-		// 	GenericTree.displaySpanSummary(nodeMap.get(s));
-		// });
-
 		MergedTree.generate(nodeMap, roots);
 		MergedTree.displayAggregatedResult();
-
-		// GenericTree.displayAggregatedResult();
 
 		System.exit(0);
 	}
@@ -123,10 +113,8 @@ public class ElasticSearchJClient {
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
 
-		queryBuilder.must(QueryBuilders.existsQuery("flags"));
-
-		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).gte(START_TIME));
-		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).lte(END_TIME));
+		queryBuilder.must(QueryBuilders.existsQuery(KEY_FLAGS));
+		queryBuilder.must(QueryBuilders.rangeQuery(TIME_FIELD).gte(START_TIME).lte(END_TIME));
 
 		searchSourceBuilder.query(queryBuilder).fetchSource(FETCH_FIELDS, null);
 		searchSourceBuilder.sort(FieldSortBuilder.DOC_FIELD_NAME, SortOrder.ASC);

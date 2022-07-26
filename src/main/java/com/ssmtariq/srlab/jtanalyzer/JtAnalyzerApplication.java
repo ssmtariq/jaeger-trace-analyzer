@@ -10,7 +10,7 @@ public class JtAnalyzerApplication {
 		SpringApplication.run(JtAnalyzerApplication.class, args);
 		try {
 			ElasticSearchJClient elasticSearchJClient = new ElasticSearchJClient();
-			elasticSearchJClient.client();
+			elasticSearchJClient.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

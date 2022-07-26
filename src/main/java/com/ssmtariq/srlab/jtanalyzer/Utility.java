@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public final class Utility {
-    public static final String DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
     /**
      * Convert custom date to milliseconds
      * @param iDate
      * @return
      */
     public static String dateToMilliseconds(String iDate){
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
+        dateFormat.setTimeZone(TimeZone.getTimeZone(Constants.TIME_ZONE));
         Date date = null;
         try {
             date = dateFormat.parse(iDate);
