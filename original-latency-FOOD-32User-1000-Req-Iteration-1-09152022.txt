@@ -1,0 +1,30 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.6)
+
+2022-09-15 06:24:39.882  INFO 3527 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_342 on node-0.tt-sperf.cloudprof-pg0.utah.cloudlab.us with PID 3527 (/users/ssmtariq/jaeger-trace-analyzer/target/jaeger-trace-analyzer-0.0.1-SNAPSHOT.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
+2022-09-15 06:24:39.888  INFO 3527 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-09-15 06:24:41.295  INFO 3527 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 2.146 seconds (JVM running for 2.849)
+Total number of spans found: 10841
+Calculating the results ./././.
+Map size: 10841
+================= Latency Calculation Results =================
+TOTAL NUMBER OF REQUESTS FOUND: 822
+----------------------------------------------------------------------------------------------------------------------------------
+AVERAGE LATENCY(seconds)  TOTAL SPAN  REMOTE PROCEDURE            
+----------------------------------------------------------------------------------------------------------------------------------
+|5.309094152068127        |822        |FOOD[getAllFood]          
+|2.8943076520681266       |3288       |FOOD[getAllFood]->FOOD[GET] 
+|2.0331599610705595       |822        |FOOD[getAllFood]->FOOD[POST] 
+|0.2983080182481752       |822        |FOOD[getAllFood]->FOOD[GET]->FOOD-MAP[getTrainFoodOfTrip] 
+|0.29716517518248176      |822        |FOOD[getAllFood]->FOOD[POST]->FOOD-MAP[getFoodStoresByStationIds] 
+|0.27054760705596104      |822        |FOOD[getAllFood]->FOOD[GET]->TRAVEL[getRouteByTripId] 
+|0.16720241362530414      |1644       |FOOD[getAllFood]->FOOD[GET]->STATION[queryForStationId] 
+|0.08146631265206813      |822        |FOOD[getAllFood]->FOOD[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET] 
+|0.048729132603406326     |822        |FOOD[getAllFood]->FOOD[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET]->ROUTE[queryById] 
+
