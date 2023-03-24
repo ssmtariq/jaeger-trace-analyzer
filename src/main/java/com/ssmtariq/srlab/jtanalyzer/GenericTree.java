@@ -67,7 +67,7 @@ public class GenericTree {
             if(node.getChildren().size()>0) queue.addAll(node.getChildren());
         }
         NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
-        if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
+        if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_CALLING_SERVICE_COUNT)) {
             successRequestRoots.add(spanId);
         }
     }
@@ -91,7 +91,7 @@ public class GenericTree {
             spanCounter[0]++;
         }
         NUMBER_OF_SERVICE_INVOLVED = spanCollector.entrySet().size();
-        if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_SERVICE_COUNT)) {
+        if (NUMBER_OF_SERVICE_INVOLVED.equals(NUMBER_OF_CALLING_SERVICE_COUNT)) {
             requestCounter[0]++;
             aggregateLatency(serviceDuration);
             aggregateSpanCount(spanCollector);

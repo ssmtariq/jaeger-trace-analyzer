@@ -93,7 +93,9 @@ public class ElasticSearchJClient {
 
 		/* Display roots found */
 		nodeMap.forEach((k,v)->{
-			if(v.getChildren().size()>0 && v.getServiceName().equals(SERVICE_PRESERVE_OTHER)){
+			if(v.getChildren().size()>0 && v.getServiceName().equals(MICRO_SERVICE_NAME)){
+				roots.add(v.getSpanId());
+			} else if (NUMBER_OF_CALLING_SERVICE_COUNT ==1 && v.getServiceName().equals(MICRO_SERVICE_NAME) ) {
 				roots.add(v.getSpanId());
 			}
 			counter[0]++;
