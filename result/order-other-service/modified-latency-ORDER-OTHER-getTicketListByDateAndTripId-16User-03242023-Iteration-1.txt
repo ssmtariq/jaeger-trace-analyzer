@@ -1,0 +1,24 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.6)
+
+2023-03-26 14:30:43.612  INFO 17818 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_362 on node-0.trainticket.cloudprof-pg0.utah.cloudlab.us with PID 17818 (/users/ssmtariq/jaeger-trace-analyzer/target/jaeger-trace-analyzer-0.0.1-SNAPSHOT.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
+2023-03-26 14:30:43.621  INFO 17818 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
+2023-03-26 14:30:45.642  INFO 17818 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 3.05 seconds (JVM running for 3.941)
+Total number of spans found: 729
+Calculating the results ./././.
+Map size: 729
+================= Latency Calculation Results =================
+TOTAL NUMBER OF REQUESTS FOUND: 729
+----------------------------------------------------------------------------------------------------------------------------------
+AVERAGE LATENCY(seconds)  TOTAL SPAN  REMOTE PROCEDURE            
+----------------------------------------------------------------------------------------------------------------------------------
+|0.028115920438957477     |524        |ORDER-OTHER[getDestStationListOfTicketsByDateAndTripId] 
+|0.004506622770919067     |205        |ORDER-OTHER[error]        
+|0.004506622770919067     |205        |ORDER-OTHER[getDestStationListOfTicketsByDateAndTripId]->ORDER-OTHER[error] 
+
