@@ -7,16 +7,16 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.6.6)
 
-2023-04-18 19:55:05.842  INFO 26404 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_362 on node-0.trainticket.cloudprof-pg0.utah.cloudlab.us with PID 26404 (/users/ssmtariq/jaeger-trace-analyzer/target/jaeger-trace-analyzer-0.0.1-SNAPSHOT.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
-2023-04-18 19:55:05.850  INFO 26404 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
-2023-04-18 19:55:07.711  INFO 26404 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 2.741 seconds (JVM running for 3.76)
-Total number of spans found: 848
+2023-04-20 09:28:19.912  INFO 14822 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_362 on node-0.trainticket.cloudprof-pg0.utah.cloudlab.us with PID 14822 (/users/ssmtariq/jaeger-trace-analyzer/target/jaeger-trace-analyzer-0.0.1-SNAPSHOT.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
+2023-04-20 09:28:19.921  INFO 14822 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
+2023-04-20 09:28:22.045  INFO 14822 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 3.142 seconds (JVM running for 4.005)
+Total number of spans found: 10000
 Calculating the results ./././.
-Map size: 848
+Map size: 10000
 ================= Latency Calculation Results =================
-TOTAL NUMBER OF REQUESTS FOUND: 848
+TOTAL NUMBER OF REQUESTS FOUND: 10000
 ----------------------------------------------------------------------------------------------------------------------------------
 AVERAGE LATENCY(seconds)  TOTAL SPAN  REMOTE PROCEDURE            
 ----------------------------------------------------------------------------------------------------------------------------------
-|1.3427561320754717       |848        |ORDER-OTHER[getTicketListByDateAndTripId] 
+|1.602916702829717        |10000      |ORDER-OTHER[getTicketListByDateAndTripId] 
 
