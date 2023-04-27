@@ -1,0 +1,97 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.6)
+
+2023-04-27 10:06:49.319  INFO 5321 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Starting JtAnalyzerApplication v0.0.1-SNAPSHOT using Java 1.8.0_362 on node-0.trainticket.cloudprof-pg0.utah.cloudlab.us with PID 5321 (/users/ssmtariq/jaeger-trace-analyzer/jar/o-1-13.jar started by ssmtariq in /users/ssmtariq/jaeger-trace-analyzer)
+2023-04-27 10:06:49.329  INFO 5321 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : No active profile set, falling back to 1 default profile: "default"
+2023-04-27 10:06:51.111  INFO 5321 --- [           main] c.s.s.jtanalyzer.JtAnalyzerApplication   : Started JtAnalyzerApplication in 2.701 seconds (JVM running for 3.653)
+Total number of spans found: 3432089
+Calculating the results ./././.
+Map size: 3432089
+================= Latency Calculation Results =================
+TOTAL NUMBER OF REQUESTS FOUND: 4889
+----------------------------------------------------------------------------------------------------------------------------------
+AVERAGE LATENCY(seconds)  TOTAL SPAN  REMOTE PROCEDURE            
+----------------------------------------------------------------------------------------------------------------------------------
+|13.850786149110247       |4889       |ROUTE-PLAN[getQuickestRoutes] 
+|9.020554766209859        |9778       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST] 
+|4.5226055082839025       |23531      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET] 
+|4.094331268562078        |4889       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo] 
+|2.8608004385354877       |4889       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo] 
+|1.934739537533238        |112468     |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET] 
+|1.7238784800572715       |103806     |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET] 
+|1.698650008590714        |40507      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST] 
+|1.5928996199631826       |60867      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TICKETINFO[queryForStationId] 
+|1.502924166496216        |60853      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET] 
+|1.4883916983023113       |56138      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId] 
+|1.4077376719165473       |56135      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET] 
+|0.9831054301493147       |28305      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST] 
+|0.9747019580691347       |12913      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel] 
+|0.9573564833299243       |12911      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST] 
+|0.8474381930865208       |59612      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId] 
+|0.813531993659235        |12635      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel] 
+|0.7890657725506238       |55311      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId] 
+|0.6858277639599101       |9285       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel] 
+|0.6740231947228472       |87965      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET] 
+|0.6735966224176723       |59575      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET] 
+|0.6733571795868276       |9285       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST] 
+|0.6276832041317243       |55302      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET] 
+|0.6129157831867458       |26428      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval] 
+|0.5653483078339129       |9153       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel] 
+|0.49628050582941297      |79204      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET] 
+|0.4692306428717529       |63873      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET] 
+|0.3897628157087339       |59017      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET]->STATION[queryForStationId] 
+|0.35640767518920025      |54853      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TICKETINFO[queryForStationId]->TICKETINFO[GET]->BASIC[queryForStationId]->BASIC[GET]->STATION[queryForStationId] 
+|0.30178067130292496      |49833      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->STATION[queryForStationId] 
+|0.27252346308038455      |18650      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval] 
+|0.22051741337696867      |26320      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getRouteByTripId] 
+|0.20779297381877684      |36246      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->STATION[queryForStationId] 
+|0.203611479443649        |13446      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL[getRouteByTripId] 
+|0.1996323716506443       |55924      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET] 
+|0.17351068357537328      |26408      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getTrainTypeByTripId] 
+|0.12733810186132133      |13444      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET] 
+|0.12263325403968092      |9438       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL2[getRouteByTripId] 
+|0.11847122663121293      |26317      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET] 
+|0.10967467191654735      |27620      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.10506460503170383      |18630      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId] 
+|0.10331796993250153      |9434       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET] 
+|0.0779485485784414       |18628      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET] 
+|0.07022761403149928      |26402      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getTrainTypeByTripId]->TRAVEL[GET] 
+|0.06707615729187973      |13229      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET]->ROUTE[queryById] 
+|0.06414871323379015      |22203      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->ROUTE[queryById] 
+|0.0624776631212927       |9175       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.06125872632440172      |25911      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getRouteByTripId]->TRAVEL[GET]->ROUTE[queryById] 
+|0.05963106811208836      |18641      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId] 
+|0.05123091470648394      |18340      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET]->ROUTE[queryById] 
+|0.04049917099611373      |26023      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL[getTrainTypeByTripId]->TRAVEL[GET]->TRAIN[retrieve] 
+|0.0392879480466353       |26370      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST] 
+|0.038689268152996524     |18640      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET] 
+|0.03348232706074862      |12410      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->ROUTE[queryById] 
+|0.03165918695029658      |18324      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getTrainTypeByTripId]->TRAVEL2[GET]->TRAIN[retrieve] 
+|0.030580943137655962     |25987      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST]->ORDER[getTicketListByDateAndTripId] 
+|0.029754895275107388     |18638      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST] 
+|0.027264643894456944     |9048       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->ROUTE[queryById] 
+|0.025479339128656166     |26122      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->CONFIG[retrieve] 
+|0.024122179791368378     |12428      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->TRAIN[retrieve] 
+|0.023724501124974432     |13412      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->TRAIN[retrieve] 
+|0.022356136633258337     |18399      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[POST]->ORDER-OTHER[getTicketListByDateAndTripId] 
+|0.01996371671098384      |9286       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->TRAIN[retrieve] 
+|0.018618435671916546     |12495      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->PRICE[query] 
+|0.017894612395172836     |18542      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->CONFIG[retrieve] 
+|0.016618721619963184     |12986      |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL[queryInfo]->TRAVEL[GET]->ORDER[calculateSoldTicket] 
+|0.014228603599918184     |9048       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->TRAIN[retrieve] 
+|0.011958425649417058     |9251       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->ORDER-OTHER[calculateSoldTicket] 
+|0.011828493147883003     |9099       |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->TICKETINFO[queryForTravel]->TICKETINFO[POST]->BASIC[queryForTravel]->BASIC[GET]->PRICE[query] 
+|4.1163428103906734E-5    |1          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[GET]->ORDER-OTHER[calculateSoldTicket]->ORDER-OTHER[error] 
+|3.1294129678870936E-5    |3          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[error] 
+|2.026365309879321E-5     |1          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[GET]->ROUTE[queryById]->ROUTE[error] 
+|5.631008386173041E-7     |2          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[error] 
+|3.2767437103702185E-7    |1          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[error] 
+|3.025158519124565E-7     |1          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[error] 
+|1.955410104315811E-7     |1          |ROUTE-PLAN[getQuickestRoutes]->ROUTE-PLAN[POST]->TRAVEL2[queryInfo]->TRAVEL2[POST]->SEAT[getLeftTicketOfInterval]->SEAT[GET]->TRAVEL2[getRouteByTripId]->TRAVEL2[error] 
+
