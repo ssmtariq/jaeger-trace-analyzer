@@ -52,6 +52,7 @@ public class ElasticSearchJClient {
 
 					/* Create new node for the span */
 					Node node = new Node(String.valueOf(hit.getSourceAsMap().get(KEY_SPAN_ID)), ((Number) hit.getSourceAsMap().get(KEY_DURATION)).longValue());
+					node.setExclusiveDuration(((Number) hit.getSourceAsMap().get(KEY_DURATION)).longValue());
 					node.setOperationName(String.valueOf(hit.getSourceAsMap().get(KEY_OPERATION_NAME)));
 					for (String fetchField : FETCH_FIELDS) {
 						//Set parentId of the span from references
@@ -68,7 +69,7 @@ public class ElasticSearchJClient {
 							node.setServiceName((String) process.get(KEY_SERVICE_NAME));
 						}
 					}
-					/* Add each node into a Map */
+					/* Add each node into a Map where key is the unique jaeger span id */
 					nodeMap.put(node.getSpanId(), node);
 				}
 			} else {
@@ -88,6 +89,8 @@ public class ElasticSearchJClient {
 		nodeMap.forEach((k,v)->{
 			if(!v.isRoot() && nodeMap.containsKey(v.getParentId())){
 				nodeMap.get(v.getParentId()).addChildren(v);
+				/* update exclusive latency of each parent node by subtracting their children's inclusive latency */
+				nodeMap.get(v.getParentId()).setExclusiveDuration(nodeMap.get(v.getParentId()).getExclusiveDuration()-v.getDuration());
 			}
 		});
 
@@ -102,7 +105,7 @@ public class ElasticSearchJClient {
 		});
 
 		MergedTree.generate(nodeMap, roots);
-		MergedTree.displayAggregatedResult();
+		MergedTree.displayAggregatedResultSortedByExclusiveAvgLatencyDesc();
 
 		System.exit(0);
 	}

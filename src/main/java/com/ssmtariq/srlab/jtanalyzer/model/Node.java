@@ -10,6 +10,7 @@ public class Node {
     private String parentId;
     private String operationName;
     private long duration;
+    private long exclusiveDuration;
     private List<Node> children = new ArrayList<>();
 
     public Node(String spanId, long duration){
@@ -55,6 +56,14 @@ public class Node {
 
     public void setDuration(long duration) {
         this.duration = duration;
+    }
+
+    public long getExclusiveDuration() {
+        return exclusiveDuration;
+    }
+
+    public void setExclusiveDuration(long exclusiveDuration) {
+        this.exclusiveDuration = exclusiveDuration;
     }
 
     public List<Node> getChildren() {
